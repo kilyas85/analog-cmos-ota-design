@@ -101,6 +101,8 @@ The two-stage architecture was used to achieve the required high DC gain while e
 
 *Cadence testbench used to evaluate the OTA with differential excitation, 50 Ω source resistance, and a 10 fF capacitive output load.*
 
+The OTA was evaluated using a differential input configuration with 50 Ω source resistance on each input path. AC-coupling capacitors isolate the signal source from the OTA input bias conditions, while the 10 fF output capacitance represents the specified load. This testbench was used as the basis for the AC, transient, and linearity simulations.
+
 #### AC Response and Stability
 
 ![Current-mirror OTA AC response](current-mirror-ota/figures/ac-response.png)
