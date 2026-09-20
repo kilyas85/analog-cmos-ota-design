@@ -13,8 +13,7 @@ The project was developed using Cadence for circuit design and simulation, with 
 
 ## Design Studies
 <details>
-<summary><strong>1. Common-Source Amplifier</strong></summary>
-
+<summary><strong>1. Common-Source Amplifier</strong> — Click to expand</summary>
 <br>
 Designed and simulated a self-biased common-source CMOS amplifier in Cadence Virtuoso. The design focused on achieving the required gain and bandwidth while driving a capacitive load, followed by transient and harmonic characterization of the circuit.
 
@@ -76,7 +75,7 @@ The large-signal step response was used to estimate the output slew rate from th
 </details>
 
 <details>
-<summary><strong>2. Current-Mirror OTA</strong></summary>
+<summary><strong>2. Current-Mirror OTA</strong> — Click to expand</summary>
 
 <br>
 
@@ -139,7 +138,7 @@ The fundamental output component is approximately −47.63 dB, while the largest
 </details>
 
 <details>
-<summary><strong>3. Fully Differential OTA with CMFB</strong></summary>
+<summary><strong>3. Fully Differential OTA with CMFB</strong> — Click to expand</summary>
 
 <br>
 
