@@ -127,8 +127,6 @@ The fundamental output component is approximately −47.63 dB, while the largest
 
 ### 3. Fully Differential OTA with CMFB
 
-### 3. Fully Differential OTA with CMFB
-
 Designed and simulated a fully differential two-stage CMOS OTA with common-mode feedback (CMFB) in Cadence Virtuoso. This design extends the previous OTA study to a fully differential architecture, incorporating input common-mode biasing, output common-mode regulation, Miller RC compensation, and PVT verification.
 
 **Design targets:**
@@ -149,7 +147,8 @@ Designed and simulated a fully differential two-stage CMOS OTA with common-mode 
 
 **Additional characterization:**
 - Miller RC compensation and stability analysis
-- Differential transfer-function analysis
+- Differential transient-response analysis
+- Output-spectrum and linearity analysis
 - PVT analysis across process, supply voltage, and temperature
 - Power-consumption analysis across PVT conditions
 
@@ -159,9 +158,9 @@ Designed and simulated a fully differential two-stage CMOS OTA with common-mode 
 
 *Transistor-level implementation of the fully differential two-stage OTA with common-mode feedback and frequency compensation.*
 
-The first stage uses a differential NMOS architecture with a tail-current source to improve common-mode rejection. The second stage provides the fully differential outputs. Miller RC compensation is applied between the stages to improve stability, using a compensation capacitor and resistor to shape the frequency response.
+The first stage uses a differential NMOS architecture with a tail-current source, while the second stage provides the fully differential outputs. Miller RC compensation is applied between the stages to shape the frequency response and improve stability.
 
-The output common-mode voltage is sensed through the CMFB network and compared with a reference common-mode voltage. The resulting feedback signal adjusts the second-stage bias to stabilize the output common-mode level. The implemented common-mode reference can be tuned from approximately 0.40 V to 0.75 V.
+The CMFB network senses the output common-mode level and adjusts the second-stage bias to regulate the outputs around the selected common-mode reference. The implemented output common-mode reference can be tuned from approximately 0.40 V to 0.75 V.
 
 #### Simulation Testbench
 
@@ -169,7 +168,7 @@ The output common-mode voltage is sensed through the CMFB network and compared w
 
 *Cadence testbench used to apply differential excitation, establish the input and output common-mode levels, and evaluate the differential output response.*
 
-The differential input is AC coupled so that the signal excitation can be applied independently of the DC input common-mode bias. Separate common-mode references are used to establish the input operating point and the desired output common-mode level. The testbench was used as the basis for nominal AC characterization and PVT verification.
+The differential input is AC coupled so that signal excitation can be applied independently of the DC input common-mode bias. Separate common-mode references establish the input operating point and desired output common-mode level. The testbench provides the basis for the nominal AC, transient, linearity, and PVT analyses.
 
 #### Differential AC Response
 
@@ -177,11 +176,27 @@ The differential input is AC coupled so that the signal excitation can be applie
 
 *Nominal differential gain and phase response of the fully differential OTA.*
 
-The differential voltage gain was evaluated using:
+The differential voltage gain was evaluated as:
 
 `Ad = (Vout+ − Vout−) / (Vin+ − Vin−)`
 
-The nominal simulation achieves approximately **56.5 dB differential gain** and a unity-gain bandwidth of approximately **450 MHz**, exceeding the required 40 dB gain and 0.1 GHz unity-gain bandwidth targets. Miller RC compensation was used to improve the stability of the two-stage architecture, with a phase margin of approximately **40°** obtained for the nominal design.
+The nominal simulation achieves approximately **56.5 dB differential gain** and a unity-gain bandwidth of approximately **450 MHz**, exceeding the required 40 dB gain and 0.1 GHz bandwidth targets. Miller RC compensation was used to obtain a nominal phase margin of approximately **40°**.
+
+#### Differential Transient Response
+
+![Fully differential OTA transient response](fully-differential-ota/figures/transient-response.png)
+
+*Time-domain response showing the differential input and corresponding differential output of the OTA.*
+
+The transient simulation evaluates the amplifier directly in differential form using `Vin+ − Vin−` and `Vout+ − Vout−`. The displayed markers correspond to approximately **200 µV peak-to-peak differential input** and approximately **7.54 mV peak-to-peak differential output**, demonstrating the time-domain differential amplification of the circuit.
+
+#### Output Spectrum and Linearity
+
+![Fully differential OTA output spectrum](fully-differential-ota/figures/output-spectrum.png)
+
+*Frequency-domain spectrum of the differential output used to investigate the linearity of the OTA.*
+
+The spectrum was calculated from the differential output `Vout+ − Vout−`. The dominant component appears at approximately **10 MHz**, with substantially smaller higher-order spectral components. This analysis was used to characterize nonlinear distortion and spectral purity of the fully differential architecture.
 
 #### PVT Gain Analysis
 
@@ -189,17 +204,15 @@ The nominal simulation achieves approximately **56.5 dB differential gain** and 
 
 *Differential gain and frequency-response variation across process, supply-voltage, and temperature conditions.*
 
-The OTA was evaluated across multiple process corners, supply voltages of **0.9 V, 1.0 V, and 1.1 V**, and temperatures of **30°C, 60°C, and 90°C**. The sweep demonstrates how process, supply, and temperature variations affect both low-frequency gain and high-frequency performance.
-
-The simulations show the expected trade-off between operating conditions and performance: reduced supply voltage and elevated temperature generally degrade amplifier performance, while higher supply voltage can improve performance at the cost of increased power consumption.
+The OTA was evaluated across process corners, supply voltages of **0.9 V, 1.0 V, and 1.1 V**, and temperatures of **30°C, 60°C, and 90°C**. The sweep demonstrates how operating conditions influence the gain and bandwidth of the fully differential design.
 
 #### PVT Stability Analysis
 
 ![Fully differential OTA phase margin across PVT](fully-differential-ota/figures/phase-margin-pvt.png)
 
-*Phase behavior of the compensated fully differential OTA across the PVT sweep.*
+*Stability behavior of the compensated fully differential OTA across the PVT sweep.*
 
-Stability was evaluated across process, voltage, and temperature variations to examine the robustness of the Miller-compensated two-stage architecture. The variation across operating corners illustrates why compensation must be assessed beyond the nominal condition when designing multi-stage analog amplifiers.
+The phase-margin behavior was evaluated across process, voltage, and temperature variations to assess the robustness of the Miller-compensated two-stage architecture beyond the nominal operating condition.
 
 #### Power Consumption Across PVT
 
@@ -207,7 +220,9 @@ Stability was evaluated across process, voltage, and temperature variations to e
 
 *Power-consumption variation across process corners, supply-voltage levels, and temperature.*
 
-The nominal design consumes approximately **0.80 mW**. Across the complete PVT sweep, power consumption varies substantially with process, supply voltage, and temperature. This analysis was used to examine the trade-off between gain, bandwidth, stability, and power efficiency under non-nominal operating conditions.
+The nominal design consumes approximately **0.80 mW**. Across the complete PVT sweep, power consumption varies with process, supply voltage, and temperature, illustrating the trade-off between analog performance and power efficiency under non-nominal operating conditions.
+
+## Design & Simulation Workflow
 
 ## Tools & Methods
 
