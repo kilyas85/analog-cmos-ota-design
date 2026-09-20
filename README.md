@@ -1,5 +1,4 @@
 # Analog CMOS Amplifier & OTA Design in Cadence
-Analog CMOS amplifier and OTA design studies in Cadence, including common-source, current-mirror, and fully differential architectures with AC, transient, distortion, stability, and PVT analysis.
 
 ## Overview
 This repository documents a series of analog CMOS circuit design and simulation studies completed as part of the Advanced CMOS Technology coursework during my Engineering Doctorate at Eindhoven University of Technology (TU/e).
@@ -10,6 +9,26 @@ The project was developed using Cadence for circuit design and simulation, with 
 
 ## Design Studies
 ### 1. Common-Source Amplifier
+
+Designed and simulated a common-source CMOS amplifier using an NMOS transistor, PMOS active load, and self-biasing feedback. The design targeted a low-frequency gain of at least 30 dB and a 3 dB bandwidth of 10 MHz while driving a 100 fF capacitive load.
+
+The PMOS active load was used to provide high output impedance, while resistive feedback established the DC operating point. Transistor dimensions were adjusted to balance gain, bandwidth, linearity, and power consumption.
+
+**Key analyses:**
+- AC analysis and Bode-plot verification
+- Transient response and settling behavior
+- Slew-rate calculation
+- Harmonic distortion analysis (HD2 and HD3)
+- Signal-to-distortion ratio (SDR)
+- Noise and SNDR analysis
+
+**Selected results:**
+- Low-frequency gain: **30 dB**
+- 3 dB bandwidth: **11 MHz**
+- Calculated slew rate: **1.0384 V/ns**
+- HD2: **35.48 dB**
+- HD3: **32.13 dB**
+- SDR: **30.48 dB**
 ### 2. Current-Mirror OTA
 ### 3. Fully Differential OTA with CMFB
 
