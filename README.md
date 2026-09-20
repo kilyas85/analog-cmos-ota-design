@@ -36,12 +36,14 @@ Designed and simulated a self-biased common-source CMOS amplifier in Cadence Vir
 ![Common-source amplifier schematic](common-source-amplifier/figures/schematic.png)
 
 *Transistor-level implementation of the self-biased common-source amplifier with a PMOS active load and capacitive output load.*
+The PMOS active load provides a high output resistance to support the required voltage gain, while the feedback path establishes the DC operating point of the amplifier. The circuit was sized and simulated with a 100 fF capacitive load.
 
 #### Frequency Response
 
 ![Common-source amplifier frequency response](common-source-amplifier/figures/frequency-response.png)
 
 *AC simulation showing approximately 30 dB low-frequency gain and a 3 dB bandwidth of approximately 11.5 MHz.*
+The simulated low-frequency gain is approximately 30 dB. The response reaches the 3 dB point at approximately 11.5 MHz, satisfying the targeted gain and bandwidth requirements.
 
 #### Transient Response
 
@@ -54,6 +56,7 @@ Designed and simulated a self-biased common-source CMOS amplifier in Cadence Vir
 ![Common-source amplifier slew-rate analysis](common-source-amplifier/figures/slew-rate.png)
 
 *Step-response simulation used to evaluate large-signal settling behavior and determine the slew rate.*
+The large-signal step response was used to estimate the output slew rate from the measured voltage transition and corresponding time interval, resulting in approximately 1.04 V/ns.
 
 #### Harmonic Analysis
 
