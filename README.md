@@ -74,7 +74,7 @@ Designed and simulated a two-stage current-mirror operational transconductance a
 **Design targets:**
 - Low-frequency gain > 60 dB
 - Unity-gain bandwidth ≥ 500 MHz
-- Differential source resistance: 50 Ω
+- Source resistance: 50 Ω per input path
 - Output load capacitance: 10 fF
 
 **Achieved performance:**
