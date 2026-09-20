@@ -264,6 +264,7 @@ The three design studies followed a progressive transistor-level design and veri
 The design studies show a progression from a basic self-biased CMOS voltage amplifier to compensated multi-stage OTA architectures and finally to a fully differential design with common-mode feedback and PVT verification. Across the studies, the work explores the practical trade-offs between gain, bandwidth, stability, linearity, and power consumption in transistor-level analog CMOS design.
 
 ## Repository Structure
+```text
 analog-cmos-ota-design/
 ├── README.md
 │
@@ -293,6 +294,7 @@ analog-cmos-ota-design/
         ├── gain-pvt.png
         ├── phase-margin-pvt.png
         └── power-pvt.png
+```markdown
 The repository is organized by design study, with simulation figures stored alongside each circuit. The main README provides the design objectives, methodology, key results, and interpretation of the simulations in a single project-level overview.
 
 ## Academic Context
