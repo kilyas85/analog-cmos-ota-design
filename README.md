@@ -68,6 +68,61 @@ The large-signal step response was used to estimate the output slew rate from th
 *Frequency-domain analysis of the fundamental and harmonic components used to characterize amplifier linearity.*
 
 ### 2. Current-Mirror OTA
+
+Designed and simulated a two-stage current-mirror operational transconductance amplifier (OTA) in Cadence Virtuoso. The design uses a differential input and single-ended output, with frequency compensation applied to achieve high gain and bandwidth while investigating the stability of the two-stage architecture.
+
+**Design targets:**
+- Low-frequency gain > 60 dB
+- Unity-gain bandwidth ≥ 500 MHz
+- Differential source resistance: 50 Ω
+- Output load capacitance: 10 fF
+
+**Achieved performance:**
+- Low-frequency gain: ≈ 60 dB
+- Unity-gain bandwidth: ≈ 501 MHz
+
+**Additional characterization:**
+- Frequency compensation and stability analysis
+- Transient response analysis
+- Dual-tone linearity analysis
+- SFDR: ≈ 41.68 dB
+
+#### Circuit Schematic
+
+![Current-mirror OTA schematic](current-mirror-ota/figures/schematic.png)
+
+*Transistor-level implementation of the two-stage current-mirror OTA with a differential input stage, single-ended output stage, and frequency-compensation network.*
+
+The two-stage architecture was used to achieve the required high DC gain while extending the output drive capability. Compensation components were introduced between the amplifier stages to shape the frequency response and investigate the gain-bandwidth-stability trade-off.
+
+#### Simulation Testbench
+
+![Current-mirror OTA testbench](current-mirror-ota/figures/testbench.png)
+
+*Cadence testbench used to evaluate the OTA with differential excitation, 50 Ω source resistance, and a 10 fF capacitive output load.*
+
+#### AC Response and Stability
+
+![Current-mirror OTA AC response](current-mirror-ota/figures/ac-response.png)
+
+*AC simulation showing the gain magnitude and phase response of the compensated two-stage OTA.*
+
+The simulated response demonstrates approximately 60 dB low-frequency gain and a unity-gain bandwidth of approximately 501 MHz, meeting the principal gain and bandwidth objectives. The phase response was also evaluated during compensation design to assess the stability of the two-stage architecture.
+
+#### Transient Response
+
+![Current-mirror OTA transient response](current-mirror-ota/figures/transient-response.png)
+
+*Time-domain simulation used to evaluate the OTA output response under differential excitation.*
+
+#### Linearity and SFDR Analysis
+
+![Current-mirror OTA SFDR analysis](current-mirror-ota/figures/sfdr-analysis.png)
+
+*Frequency-domain analysis used to evaluate the spectral purity and nonlinear distortion of the OTA.*
+
+The fundamental output component is approximately −47.63 dB, while the largest identified distortion component is approximately −89.30 dB, corresponding to an SFDR of approximately **41.68 dB**. This exceeds the additional 40 dB SFDR target used for the linearity study.
+
 ### 3. Fully Differential OTA with CMFB
 
 ## Design & Simulation Workflow
