@@ -1,5 +1,9 @@
 # Analog CMOS Amplifier & OTA Design in Cadence
 
+<p align="center">
+  <img src="assets/github-banner.png" alt="Analog CMOS Amplifier and OTA Design in Cadence Virtuoso" width="100%">
+</p>
+
 ## Overview
 This repository documents a series of analog CMOS circuit design and simulation studies completed as part of the Advanced CMOS Technology coursework during my Engineering Doctorate at Eindhoven University of Technology (TU/e).
 
