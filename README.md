@@ -222,12 +222,84 @@ The phase-margin behavior was evaluated across process, voltage, and temperature
 
 The nominal design consumes approximately **0.80 mW**. Across the complete PVT sweep, power consumption varies with process, supply voltage, and temperature, illustrating the trade-off between analog performance and power efficiency under non-nominal operating conditions.
 
-## Design & Simulation Workflow
+The three design studies followed a progressive transistor-level design and verification workflow in Cadence Virtuoso:
 
-## Tools & Methods
+1. **Specification and architecture selection**  
+   Design requirements such as gain, bandwidth, loading, stability, common-mode behavior, and power consumption were translated into circuit-level targets and suitable amplifier architectures.
 
+2. **Transistor-level circuit design**  
+   CMOS amplifier and OTA architectures were implemented at transistor level, with device sizing and bias conditions adjusted to meet the required operating points and performance targets.
+
+3. **AC and stability analysis**  
+   Frequency-domain simulations were used to evaluate gain, bandwidth, unity-gain frequency, phase behavior, and the effect of frequency compensation.
+
+4. **Transient and linearity analysis**  
+   Time-domain simulations were used to examine amplifier response and large-signal behavior, while spectral analysis was used to investigate harmonic distortion, SFDR, and nonlinear performance where applicable.
+
+5. **Common-mode control and compensation**  
+   For the fully differential OTA, a CMFB loop was incorporated to regulate the output common-mode voltage, while Miller RC compensation was used to manage the stability of the two-stage architecture.
+
+6. **PVT verification**  
+   The fully differential design was evaluated across process, supply-voltage, and temperature variations to examine the robustness of gain, bandwidth, stability, and power consumption beyond nominal operating conditions.
+
+   
+- **EDA Environment:** Cadence Virtuoso
+- **Circuit Design:** Transistor-level CMOS amplifier and OTA design, device sizing, biasing, current mirrors, differential stages, and common-mode feedback
+- **Frequency-Domain Analysis:** AC response, gain, bandwidth, unity-gain frequency, phase behavior, and stability analysis
+- **Time-Domain Analysis:** Transient response, settling behavior, and slew-rate characterization
+- **Linearity Analysis:** Harmonic distortion, spectral analysis, SDR/SFDR, and dual-tone characterization
+- **Compensation:** Miller RC compensation for multi-stage OTA stability
+- **Robustness Verification:** Process, voltage, and temperature (PVT) analysis
+- **Additional Analysis:** Noise and common-mode performance investigation
+
+  
 ## Key Results
 
+| Design Study | Gain | Bandwidth / UGB | Stability | Linearity | Additional Result |
+|---|---:|---:|---:|---:|---|
+| Common-Source Amplifier | ≈ 30 dB | ≈ 11.5 MHz (3 dB BW) | — | HD2 ≈ 35.48 dB, HD3 ≈ 32.13 dB | Slew rate ≈ 1.04 V/ns |
+| Current-Mirror OTA | ≈ 60 dB | ≈ 501 MHz UGB | Compensation analyzed | SFDR ≈ 41.68 dB | Differential-input, single-ended two-stage OTA |
+| Fully Differential OTA with CMFB | ≈ 56.5 dB | ≈ 450 MHz UGB | ≈ 40° phase margin | Spectral characterization | ≈ 0.80 mW nominal power |
+
+The design studies show a progression from a basic self-biased CMOS voltage amplifier to compensated multi-stage OTA architectures and finally to a fully differential design with common-mode feedback and PVT verification. Across the studies, the work explores the practical trade-offs between gain, bandwidth, stability, linearity, and power consumption in transistor-level analog CMOS design.
+
 ## Repository Structure
+```text
+analog-cmos-ota-design/
+├── README.md
+│
+├── common-source-amplifier/
+│   └── figures/
+│       ├── schematic.png
+│       ├── frequency-response.png
+│       ├── transient-response.png
+│       ├── slew-rate.png
+│       └── distortion-analysis.png
+│
+├── current-mirror-ota/
+│   └── figures/
+│       ├── schematic.png
+│       ├── testbench.png
+│       ├── ac-response.png
+│       ├── transient-response.png
+│       └── sfdr-analysis.png
+│
+└── fully-differential-ota/
+    └── figures/
+        ├── schematic.png
+        ├── testbench.png
+        ├── ac-response.png
+        ├── transient-response.png
+        ├── output-spectrum.png
+        ├── gain-pvt.png
+        ├── phase-margin-pvt.png
+        └── power-pvt.png
+
+```markdown
+The repository is organized by design study, with simulation figures stored alongside each circuit. The main README provides the design objectives, methodology, key results, and interpretation of the simulations in a single project-level overview.
+
 
 ## Academic Context
+This project was completed as part of the **Advanced CMOS Technology** coursework within the **Engineering Doctorate (EngD) program at Eindhoven University of Technology (TU/e)**.
+
+The coursework focused on transistor-level analog CMOS design and progressively introduced amplifier architectures, operational transconductance amplifiers, frequency compensation, common-mode feedback, linearity analysis, and PVT verification. This repository presents selected design methodology and simulation results as a consolidated engineering portfolio project.
