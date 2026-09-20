@@ -10,25 +10,52 @@ The project was developed using Cadence for circuit design and simulation, with 
 ## Design Studies
 ### 1. Common-Source Amplifier
 
-Designed and simulated a common-source CMOS amplifier using an NMOS transistor, PMOS active load, and self-biasing feedback. The design targeted a low-frequency gain of at least 30 dB and a 3 dB bandwidth of 10 MHz while driving a 100 fF capacitive load.
+Designed and simulated a self-biased common-source CMOS amplifier in Cadence Virtuoso. The design was evaluated for gain, bandwidth, transient response, slew rate, and harmonic distortion.
 
-The PMOS active load was used to provide high output impedance, while resistive feedback established the DC operating point. Transistor dimensions were adjusted to balance gain, bandwidth, linearity, and power consumption.
-
-**Key analyses:**
-- AC analysis and Bode-plot verification
-- Transient response and settling behavior
-- Slew-rate calculation
-- Harmonic distortion analysis (HD2 and HD3)
-- Signal-to-distortion ratio (SDR)
-- Noise and SNDR analysis
+**Design targets:**
+- Low-frequency gain ≥ 30 dB
+- 3 dB bandwidth ≈ 10 MHz
+- Load capacitance: 100 fF
+- Source resistance: 10 Ω
+- SDR target: ≥ 40 dB for a 10 mV peak-to-peak input at 1 MHz
 
 **Selected results:**
-- Low-frequency gain: **30 dB**
-- 3 dB bandwidth: **11 MHz**
-- Calculated slew rate: **1.0384 V/ns**
-- HD2: **35.48 dB**
-- HD3: **32.13 dB**
-- SDR: **30.48 dB**
+- Low-frequency gain: ≈ 30 dB
+- 3 dB bandwidth: ≈ 11.5 MHz
+- Slew rate: ≈ 1.04 V/ns
+- HD2: ≈ 35.48 dB
+- HD3: ≈ 32.13 dB
+- SDR: ≈ 30.48 dB
+
+#### Circuit Schematic
+
+![Common-source amplifier schematic](common-source-amplifier/figures/schematic.png)
+
+*Transistor-level implementation of the self-biased common-source amplifier in Cadence Virtuoso.*
+
+#### Frequency Response
+
+![Common-source amplifier frequency response](common-source-amplifier/figures/frequency-response.png)
+
+*AC simulation showing approximately 30 dB low-frequency gain and the 3 dB bandwidth near 11.5 MHz.*
+
+#### Transient Response
+
+![Common-source amplifier transient response](common-source-amplifier/figures/transient-response.png)
+
+*Time-domain simulation used to evaluate the amplifier response to a sinusoidal input.*
+
+#### Slew-Rate Analysis
+
+![Common-source amplifier slew-rate analysis](common-source-amplifier/figures/slew-rate.png)
+
+*Step-response simulation used to evaluate large-signal settling behavior and slew rate.*
+
+#### Distortion Analysis
+
+![Common-source amplifier distortion analysis](common-source-amplifier/figures/distortion-analysis.png)
+
+*Frequency-domain analysis of the fundamental and harmonic components used to evaluate distortion performance.*
 ### 2. Current-Mirror OTA
 ### 3. Fully Differential OTA with CMFB
 
