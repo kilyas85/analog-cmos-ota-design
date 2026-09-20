@@ -267,7 +267,6 @@ The three design studies followed a progressive transistor-level design and veri
 - **Compensation:** Miller RC compensation for multi-stage OTA stability
 - **Robustness Verification:** Process, voltage, and temperature (PVT) analysis
 - **Additional Analysis:** Noise and common-mode performance investigation
-
   
 ## Key Results
 
