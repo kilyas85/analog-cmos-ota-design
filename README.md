@@ -295,7 +295,6 @@ analog-cmos-ota-design/
         ├── phase-margin-pvt.png
         └── power-pvt.png
 
-```markdown
 The repository is organized by design study, with simulation figures stored alongside each circuit. The main README provides the design objectives, methodology, key results, and interpretation of the simulations in a single project-level overview.
 
 
