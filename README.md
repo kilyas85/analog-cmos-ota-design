@@ -8,8 +8,10 @@ The work progresses from a self-biased common-source amplifier to a two-stage cu
 The project was developed using Cadence for circuit design and simulation, with emphasis on understanding the trade-offs between gain, bandwidth, stability, linearity, and power consumption in analog CMOS circuits.
 
 ## Design Studies
-### 1. Common-Source Amplifier
+<details>
+<summary><strong>1. Common-Source Amplifier</strong></summary>
 
+<br>
 Designed and simulated a self-biased common-source CMOS amplifier in Cadence Virtuoso. The design focused on achieving the required gain and bandwidth while driving a capacitive load, followed by transient and harmonic characterization of the circuit.
 
 **Design targets:**
@@ -67,7 +69,12 @@ The large-signal step response was used to estimate the output slew rate from th
 
 *Frequency-domain analysis of the fundamental and harmonic components used to characterize amplifier linearity.*
 
-### 2. Current-Mirror OTA
+</details>
+
+<details>
+<summary><strong>2. Current-Mirror OTA</strong></summary>
+
+<br>
 
 Designed and simulated a two-stage current-mirror operational transconductance amplifier (OTA) in Cadence Virtuoso. The design uses a differential input and single-ended output, with frequency compensation applied to achieve high gain and bandwidth while investigating the stability of the two-stage architecture.
 
@@ -125,7 +132,12 @@ The simulated response demonstrates approximately 60 dB low-frequency gain and a
 
 The fundamental output component is approximately −47.63 dB, while the largest identified distortion component is approximately −89.30 dB, corresponding to an SFDR of approximately **41.68 dB**. This exceeds the additional 40 dB SFDR target used for the linearity study.
 
-### 3. Fully Differential OTA with CMFB
+</details>
+
+<details>
+<summary><strong>3. Fully Differential OTA with CMFB</strong></summary>
+
+<br>
 
 Designed and simulated a fully differential two-stage CMOS OTA with common-mode feedback (CMFB) in Cadence Virtuoso. This design extends the previous OTA study to a fully differential architecture, incorporating input common-mode biasing, output common-mode regulation, Miller RC compensation, and PVT verification.
 
@@ -222,6 +234,10 @@ The phase-margin behavior was evaluated across process, voltage, and temperature
 
 The nominal design consumes approximately **0.80 mW**. Across the complete PVT sweep, power consumption varies with process, supply voltage, and temperature, illustrating the trade-off between analog performance and power efficiency under non-nominal operating conditions.
 
+</details>
+
+## Design & Simulation Workflow
+
 The three design studies followed a progressive transistor-level design and verification workflow in Cadence Virtuoso:
 
 1. **Specification and architecture selection**  
@@ -242,7 +258,7 @@ The three design studies followed a progressive transistor-level design and veri
 6. **PVT verification**  
    The fully differential design was evaluated across process, supply-voltage, and temperature variations to examine the robustness of gain, bandwidth, stability, and power consumption beyond nominal operating conditions.
 
-   
+## Tools & Methods   
 - **EDA Environment:** Cadence Virtuoso
 - **Circuit Design:** Transistor-level CMOS amplifier and OTA design, device sizing, biasing, current mirrors, differential stages, and common-mode feedback
 - **Frequency-Domain Analysis:** AC response, gain, bandwidth, unity-gain frequency, phase behavior, and stability analysis
